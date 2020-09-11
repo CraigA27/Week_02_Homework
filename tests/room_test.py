@@ -7,7 +7,7 @@ class TestRoom(unittest.TestCase):
 
     def setUp(self):
         self.room = Room("Room 1", 40, 4)
-        self.guests = Guest("Rocky", 100, "Eye of the Tiger")
+        self.guests = Guest("Rocky", 100, "Eye of the tiger")
 
     def test_room_has_name(self):
         self.assertEqual("Room 1", self.room.name)
@@ -23,18 +23,30 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(1, self.room.get_current_guests())
     
     def test_can_add_guest_to_room(self):
-        guest = Guest("Rocky", 100, "Eye of the Tiger")
+        guest = Guest("Rocky", 100, "Eye of the tiger")
         self.room.guests.append(guest)
         self.assertEqual(1, self.room.get_current_guests())
 
     def test_can_remove_guest_from_room(self):
-        guest = Guest("Rocky", 100, "Eye of the Tiger")
+        guest = Guest("Rocky", 100, "Eye of the tiger")
         self.room.guests.append(guest)
         self.room.guests.remove(guest)
         self.assertEqual (0, self.room.get_current_guests())
 
     def test_can_remove_all_guests_from_room(self):
-        guest = Guest("Rocky", 100, "Eye of the Tiger")
+        guest = Guest("Rocky", 100, "Eye of the tiger")
         self.room.guests.append(guest)
         self.room.guests = []
         self.assertEqual(0, self.room.get_current_guests())
+
+    def test_can_add_guest_to_room_room_full(self):
+        guest_1 = Guest("Rocky", 100, "Eye of the tiger")
+        guest_2 = Guest("Apollo", 100, "Living in America")
+        guest_3 = Guest("Adrian", 100, "No easy way out")
+        guest_4 = Guest("Paulie", 100, "Heart's on fire")
+        guest_5 = Guest("Ivan", 100, "Burning heart")
+        self.room.guests.append(guest_1)
+        self.room.guests.append(guest_2)
+        self.room.guests.append(guest_3)
+        self.room.guests.append(guest_4)
+        self.assertEqual("Room is full", self.room.add_guest_to_room(guest_5))

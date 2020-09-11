@@ -21,7 +21,12 @@ class Room:
         return len(self.guests)
 
     def add_guest_to_room(self, guest):
-        return self.guests.append(guest)
+        capacity = self.get_room_capacity()
+        current_guests = self.get_current_guests()
+        if current_guests < capacity:
+            return self.guests.append(guest)
+        else:
+            return "Room is full"
 
     def remove_guest_from_room(self, guest):
         return self.guests.remove(guest)

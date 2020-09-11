@@ -6,7 +6,7 @@ from classes.song import Song
 class TestSong(unittest.TestCase):
 
     def setUp(self):
-        self.song = Song("Eye of the Tiger")
+        self.song = Song("Eye of the tiger")
 
     def test_can_get_song_name(self):
-        self.assertEqual("Eye of the Tiger", self.song.name)
+        self.assertEqual("Eye of the tiger", self.song.name)
