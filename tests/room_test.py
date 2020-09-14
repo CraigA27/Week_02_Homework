@@ -50,3 +50,15 @@ class TestRoom(unittest.TestCase):
         self.room.guests.append(guest_3)
         self.room.guests.append(guest_4)
         self.assertEqual("Room is full", self.room.add_guest_to_room(guest_5))
+
+    def test_can_take_room_payment_from_guest(self):
+        self.assertEqual(40, self.room.take_room_payment_from_guest(self.guests))
+
+    def test_can_add_song_to_room(self):
+        song = Song("Eye of the tiger")
+        self.assertEqual("Eye of the tiger", self.room.add_song_to_room(song))
+    
+        
+
+
+
